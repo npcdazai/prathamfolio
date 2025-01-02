@@ -13,11 +13,11 @@ const Contact = () => {
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
-            src="/img/contact-1.webp"
+            src="/img/footer2.jpg"
             clipClass="contact-clip-path-1"
           />
           <ImageClipBox
-            src="/img/contact-2.webp"
+            src="/img/footer1.jpg"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
           />
         </div>
@@ -28,18 +28,18 @@ const Contact = () => {
             clipClass="absolute md:scale-125"
           />
           <ImageClipBox
-            src="/img/swordman.webp"
+            src="/img/code.jpg"
             clipClass="sword-man-clip-path md:scale-125"
           />
         </div>
 
         <div className="flex flex-col items-center text-center">
           <p className="mb-10 font-general text-[10px] uppercase">
-            Join Zentry
+            Pratham Mandavkar
           </p>
 
           <AnimatedTitle
-            title="let&#39;s b<b>u</b>ild the <br /> new era of <br /> g<b>a</b>ming t<b>o</b>gether."
+            title="let&#39;s b<b>u</b>ild the <br /> new era of <br /> c<b>od</b>ing t<b>o</b>gether."
             className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9]"
           />
 

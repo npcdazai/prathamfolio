@@ -1,8 +1,11 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import MagicButton from "./MagicButton";
+import { IoCopyOutline } from "react-icons/io5";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
+
   const itemRef = useRef(null);
 
   const handleMouseMove = (event) => {
@@ -38,7 +41,7 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon }) => {
+export const BentoCard = ({ src, title, description, isComingSoon, link }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -73,7 +76,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
           )}
         </div>
 
-        {isComingSoon && (
+        {isComingSoon ? (
           <div
             ref={hoverButtonRef}
             onMouseMove={handleMouseMove}
@@ -92,99 +95,140 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             <TiLocationArrow className="relative z-20" />
             <p className="relative z-20">coming soon</p>
           </div>
-        )}
+        ) :
+          <a href={link}>
+            <div
+              ref={hoverButtonRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white"
+            >
+              {/* Radial gradient hover effect */}
+              <div
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+                style={{
+                  opacity: hoverOpacity,
+                  background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+                }}
+              />
+              <TiLocationArrow className="relative z-20" />
+              <p className="relative z-20">Check Live Site</p>
+            </div>
+          </a>
+        }
       </div>
     </div>
   );
 };
 
-const Features = () => (
-  <section className="bg-black pb-52">
-    <div className="container mx-auto px-3 md:px-10">
-      <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer for Frontend Developers
-        </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Step into a dynamic and evolving universe, where an ecosystem of products seamlessly integrates into an interactive overlay. As a frontend developer, you'll craft immersive experiences, building interfaces that bring this interconnected world to life and overlay it onto the user's environment.
-        </p>
+const Features = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const email = "prathammandavkar932@gmail.com";
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  return (
+    <section className="bg-black pb-52">
+      <div className="container mx-auto px-3 md:px-10">
+        <div className="px-5 py-32">
+          <p className="font-circular-web text-lg text-blue-50">
+            Into the Metagame Layer for Frontend Developers
+          </p>
+          <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
+            Step into a dynamic and evolving universe, where an ecosystem of products seamlessly integrates into an interactive overlay. As a frontend developer, you'll craft immersive experiences, building interfaces that bring this interconnected world to life and overlay it onto the user's environment.
+          </p>
+        </div>
+
+        <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+          <BentoCard
+            src="videos/trans.mp4"
+            title={<span>The Inside Scoop</span>}
+            description="Currently building a cloud-based transportation management system (TMS) that helps businesses solve logistics challenges"
+            isComingSoon
+          />
+        </BentoTilt>
+
+        <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+          <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+            <BentoCard
+              src="videos/feature-2.mp4"
+              title={<span>Pra<b>th</b>am</span>}
+              description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            // isComingSoon
+            />
+          </BentoTilt>
+
+          <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+            <BentoCard
+              src="videos/pinance.mp4"
+              title={<span>Pi-Finance</span>}
+              description="The Financial Dashboard is a full-stack web application that provides an interface for managing employee financial data"
+              // isComingSoon
+              link="https://pifinance.vercel.app/"
+            />
+          </BentoTilt>
+
+          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+            <BentoCard
+              src="videos/optifii.mp4"
+              title={<span>OP<b>TI</b>FII</span>}
+              description="The OptiFii Dashboard is a comprehensive employee expense and benefit management platform."
+              // isComingSoon
+              link="https://corporatestatic.optifii.betadelivery.com/"
+            />
+          </BentoTilt>
+
+          <BentoTilt className="bento-tilt_2">
+
+
+            <div className="relative flex align-middle items-center justify-center size-full flex-col bg-black">
+              <video
+                src="videos/globe.mp4"
+                loop
+                muted
+                autoPlay
+                className="absolute top-0 left-0 w-full h-full object-cover z-0"
+              />
+
+              <div className="relative z-10 flex flex-col items-center">
+                <div
+                  className={`absolute -bottom-5 right-0 ${copied ? "block" : "hidden"}`}
+                >
+                  {/* Add content here if needed */}
+                </div>
+                <MagicButton
+                  title={copied ? "Email is Copied!" : "Copy my email address"}
+                  icon={<IoCopyOutline />}
+                  position="left"
+                  handleClick={handleCopy}
+                  otherClasses="!bg-[#161A31] z-10"
+                />
+              </div>
+            </div>
+
+
+
+          </BentoTilt>
+
+          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+            <BentoCard
+              src="videos/ngo.mp4"
+              title={<span>N<b>G</b>O</span>}
+              description="The ShivShakti Kalka Sanatan Seva project is a MERN Stack-based website"
+              // isComingSoon
+              link="https://shivshakti-eta.vercel.app/"
+            />
+          </BentoTilt>
+        </div>
       </div>
-
-      <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
-        <BentoCard
-          src="videos/trans.mp4"
-          title={
-            <>
-              The Inside Scoop
-            </>
-          }
-          description="Currently building a cloud-based transportation management system (TMS) that helps businesses solve logistics challenges"
-          isComingSoon
-        />
-      </BentoTilt>
-
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
-          <BentoCard
-            src="videos/feature-2.mp4"
-            title={
-              <>
-                zig<b>m</b>a
-              </>
-            }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-            isComingSoon
-          />
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
-          <BentoCard
-            src="videos/feature-3.mp4"
-            title={
-              <>
-                Pi-Finance
-              </>
-            }
-            description="The Financial Dashboard is a full-stack web application that provides an interface for managing employee financial data"
-            isComingSoon
-          />
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
-          <BentoCard
-            src="videos/feature-4.mp4"
-            title={
-              <>
-                az<b>u</b>l
-              </>
-            }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-            isComingSoon
-          />
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
-            </h1>
-
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_2">
-          <video
-            src="videos/feature-5.mp4"
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-center"
-          />
-        </BentoTilt>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Features;
+
