@@ -3,10 +3,10 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-
+import { saveAs } from "file-saver";
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = ["About", "Experience", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -62,6 +62,18 @@ const NavBar = () => {
     });
   }, [isNavVisible]);
 
+  // Function to handle PDF download
+  // const handleDownloadResume = () => {
+  //   const link = document.createElement("a");
+  //   link.href = "/PrathamMandavkar.pdf"; 
+  //   link.download = "Pratham_Resume.pdf";
+  //   link.click();
+  // };
+
+  const handleDownloadResume = () => {
+    saveAs("public/PrathamMandavkar.pdf", "Pratham_Resume.pdf");
+  };
+
   return (
     <div
       ref={navContainerRef}
@@ -74,9 +86,10 @@ const NavBar = () => {
             <img src="/img/logo.png" alt="logo" className="w-10" />
 
             <Button
-              id="product-button"
-              title="Products"
+              id="resume-button"
+              title="Resume"
               rightIcon={<TiLocationArrow />}
+              onClick={handleDownloadResume}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
             />
           </div>
