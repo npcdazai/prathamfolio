@@ -18,14 +18,14 @@ const workExperience = [
     {
         id: 2,
         title: "React JS Devloper AT APML ",
-        desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+        desc: "Designed and developed Web app using React JS.",
         className: "md:col-span-2",
         thumbnail: exp2,
     },
     {
         id: 3,
         title: "Freelance WebApp Dev Project",
-        desc: "Devloped Sai Service Website client, from initial concept to deployment.",
+        desc: "Devloped Finance , NGO  Website, from initial concept to deployment.",
         className: "md:col-span-2", 
         thumbnail: exp3,
     },
