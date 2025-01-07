@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 import { saveAs } from "file-saver";
 import Button from "./Button";
-
+import myresume from "../../public/PrathamMandavkar.pdf"
 const navItems = ["About", "Experience", "Contact"];
 
 const NavBar = () => {
@@ -71,7 +71,7 @@ const NavBar = () => {
   // };
 
   const handleDownloadResume = () => {
-    saveAs("public/PrathamMandavkar.pdf", "Pratham_Resume.pdf");
+    saveAs(myresume, "Pratham_Resume.pdf");
   };
 
   return (
@@ -85,13 +85,25 @@ const NavBar = () => {
           <div className="flex items-center gap-7">
             <img src="/img/logo.png" alt="logo" className="w-10" />
 
-            <Button
+            {/* <Button
               id="resume-button"
               title="Resume"
               rightIcon={<TiLocationArrow />}
               onClick={handleDownloadResume}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
+            /> */}
+            <button onClick={handleDownloadResume} className="group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full px-7 py-3 text-black bg-blue-50 md:flex hidden items-center justify-center gap-1">
+              <span className="relative inline-flex overflow-hidden font-general text-xs uppercase">
+                <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:translate-y-[-160%] group-hover:skew-y-12">
+                  Resume
+                </div>
+                <div className="absolute translate-y-[164%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
+                  here
+                </div>
+              </span>
+
+              <TiLocationArrow />
+            </button>
           </div>
 
           {/* Navigation Links and Audio Button */}

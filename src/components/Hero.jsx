@@ -151,9 +151,7 @@ const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              I'm Frontend Devloper <br /> based in India.
-
-
+              I'm FrontEnd Devloper,<br />  user interfaces and web applications
             </p>
 
             <Button

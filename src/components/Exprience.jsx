@@ -2,7 +2,10 @@ import React from "react";
 
 import { Button } from "./MovingBorder";
 import AnimatedTitle from "./AnimatedTitle";
-
+import exp1 from "../../public/img/exp1.svg"
+import exp2 from "../../public/img/exp2.svg"
+import exp3 from "../../public/img/exp3.svg"
+import exp4 from "../../public/img/exp4.svg"
 
 const workExperience = [
     {
@@ -10,28 +13,28 @@ const workExperience = [
         title: "Frontend Engineer Intern",
         desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
         className: "md:col-span-2",
-        thumbnail: "public/img/exp1.svg",
+        thumbnail: exp1,
     },
     {
         id: 2,
         title: "React JS Devloper AT APML ",
         desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-        className: "md:col-span-2", // change to md:col-span-2
-        thumbnail: "public/img/exp2.svg",
+        className: "md:col-span-2",
+        thumbnail: exp2,
     },
     {
         id: 3,
         title: "Freelance WebApp Dev Project",
         desc: "Devloped Sai Service Website client, from initial concept to deployment.",
-        className: "md:col-span-2", // change to md:col-span-2
-        thumbnail: "public/img/exp3.svg",
+        className: "md:col-span-2", 
+        thumbnail: exp3,
     },
     {
         id: 4,
         title: "React JS Developer At MAD",
         desc: "Developed and maintained user-facing features using modern frontend technologies.",
         className: "md:col-span-2",
-        thumbnail: "public/img/exp4.svg",
+        thumbnail: exp4,
     },
 ];
 

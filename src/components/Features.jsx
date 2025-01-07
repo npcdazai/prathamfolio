@@ -156,10 +156,10 @@ const Features = () => {
         <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
-              src="videos/feature-2.mp4"
-              title={<span>Pra<b>th</b>am</span>}
-              description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-            // isComingSoon
+              src="videos/swift.mp4"
+              title={<span>S<b>ai</b>Service</span>}
+              description="The Maruti Suzuki dealership in India and has a presence in Pune, Kolhapur, Mumbai, Goa, Telangana and Kerala."
+              link="https://wordpress.betadelivery.com/sai-service/pages/index.php"
             />
           </BentoTilt>
 
